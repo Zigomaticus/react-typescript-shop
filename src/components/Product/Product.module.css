@@ -1,0 +1,22 @@
+.product {
+  width: 400px;
+  height: fit-content;
+  border: 1px solid lightgray;
+  text-align: center;
+  padding: 15px 0;
+  margin-bottom: 5px;
+}
+
+.buttonDescYellow {
+  background: yellow;
+  width: 100px;
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+}
+
+.buttonDescGreen {
+  background: greenyellow;
+  width: 100px;
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+}

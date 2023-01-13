@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
+// Components
+import Product from "./components/Product/Product";
+// Model
+import { IProduct } from "./models";
+// Css
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  async function fetchProducts() {
+    setLoading(true);
+    const response = await axios.get<IProduct[]>(
+      "https://fakestoreapi.com/products"
+    );
+    setProducts(response.data);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="wrapper">
+        {loading && <h2>Loading...</h2>}
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
