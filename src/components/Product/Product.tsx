@@ -27,9 +27,7 @@ const Product = ({ product }: ProductProps) => {
       >
         {visibleDescription ? "Hide details" : "Show details"}
       </button>
-      {visibleDescription && (
-        <p>{product.description}</p>
-      )}
+      {visibleDescription && <p>{product.description}</p>}
     </div>
   );
 };
