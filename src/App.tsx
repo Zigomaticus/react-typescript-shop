@@ -15,12 +15,17 @@ import "./App.css";
 const App = () => {
   const { products, error, loading, addProduct } = useProducts();
 
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const createHandler = (product: IProduct) => {
     setModal(false);
     addProduct(product);
   };
+
+  // function closeModal(e: React.ChangeEvent) {
+  //   e.stopPropagation();
+  //   setModal(false);
+  // }
 
   return (
     <div className="App">
@@ -36,6 +41,9 @@ const App = () => {
           <Product key={product.id} product={product} />
         ))}
       </div>
+      <button className="createModal" onClick={() => setModal(true)}>
+        +
+      </button>
     </div>
   );
 };
